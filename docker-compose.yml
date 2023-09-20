@@ -1,13 +1,23 @@
 version: "3.8"
 services:
-  cache:
+  redis:
     image: redis:6.2-alpine
     restart: always
     ports:
       - "6379:6379"
-    command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    command: redis-server --save 20 1 --loglevel warning
     volumes:
       - cache:/data
+  api:
+    image: go-short-api:latest  # Use the image name
+    environment:
+      - PORT=8080
+      - REDIS_ADDR=redis:6379
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+
 volumes:
   cache:
     driver: local

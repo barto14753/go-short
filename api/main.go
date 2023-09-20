@@ -4,10 +4,12 @@ import (
   "log"
   "net/http"
   "github.com/gin-gonic/gin"
+  "github.com/gin-contrib/cors"
   "context"
-	"github.com/redis/go-redis/v9"
+  "github.com/redis/go-redis/v9"
   "math/rand"
   "time"
+  "os"
 )
 
 var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -61,12 +63,13 @@ func getUniqueKey(client *redis.Client) string {
 }
 
 func main() {
+  redisAddr := os.Getenv("REDIS_ADDR")
   rand.Seed(time.Now().UnixNano())
   r := gin.Default()
+  r.Use(cors.Default())
 
   client := redis.NewClient(&redis.Options{
-    Addr:	  "localhost:6379",
-    Password: "eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81",
+    Addr:	  redisAddr,
     DB:		  0,
   })
 
