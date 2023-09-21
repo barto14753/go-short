@@ -9,7 +9,7 @@ services:
     volumes:
       - cache:/data
   api:
-    image: go-short-api:latest  # Use the image name
+    build: api/
     environment:
       - PORT=8080
       - REDIS_ADDR=redis:6379
@@ -17,6 +17,13 @@ services:
       - "8080:8080"
     depends_on:
       - redis
+  frontend:
+    build: frontend/
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
 
 volumes:
   cache:
