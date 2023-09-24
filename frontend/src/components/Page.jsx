@@ -88,7 +88,7 @@ export default function Page() {
 						fullWidth
 						onClick={shortUrl}
 					>
-						Button
+						Short
 					</Button>
 				</Grid>
 

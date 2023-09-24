@@ -10,3 +10,12 @@ URL shortener
 * Go server
 * React webapp
 * React Native mobile
+
+## Run
+
+### Docker
+```
+docker-compose up
+```
+
+## Apps
