@@ -18,4 +18,5 @@ URL shortener
 docker-compose up
 ```
 
-## Apps
+## App
+![Screenshot from 2023-09-24 22-06-40](https://github.com/barto14753/go-short/assets/56938330/995be74b-78cc-4617-bbfe-2579d43409ef)
