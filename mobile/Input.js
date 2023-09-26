@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
+import Clipboard from "@react-native-clipboard/clipboard";
 import axios from "axios";
 
 const Input = () => {
@@ -19,17 +20,29 @@ const Input = () => {
 			.catch((error) => {});
 	};
 
+	const copy = () => {
+		Clipboard.setString(short);
+	};
+
+	const paste = async () => {
+		const u = await Clipboard.getString();
+		setUrl(u);
+	};
+
 	return (
 		<>
 			<View style={styles.container}>
 				<TextInput
 					style={styles.textInput}
+					value={url}
 					label="Enter Text"
 					onChangeText={(e) => {
 						setUrl(e);
 					}}
 				/>
-				<Button mode="outlined">Paste</Button>
+				<Button mode="outlined" onPress={paste}>
+					Paste
+				</Button>
 			</View>
 			<View style={styles.container}>
 				<TextInput
@@ -38,7 +51,9 @@ const Input = () => {
 					disabled
 					onChangeText={(newText) => setText(newText)}
 				/>
-				<Button mode="outlined">Copy</Button>
+				<Button mode="outlined" onPress={copy}>
+					Copy
+				</Button>
 			</View>
 			<Button
 				style={styles.button}
