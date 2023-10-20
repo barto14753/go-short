@@ -19,4 +19,6 @@ docker-compose up
 ```
 
 ## App
-![Screenshot from 2023-09-24 22-06-40](https://github.com/barto14753/go-short/assets/56938330/995be74b-78cc-4617-bbfe-2579d43409ef)
+
+
+![Screenshot from 2023-09-24 22-06-40](https://github.com/barto14753/go-short/assets/56938330/5d32226c-61d6-47bc-86bf-1bb1669d00d0)
